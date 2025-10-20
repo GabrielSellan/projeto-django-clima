@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampo Certo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+         .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .resultado, .erro {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .erro {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tempo Certo</h1>
+        
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form}}
+            <input type="submit" text="Enviar">
+        </form>
+
+        {% if cidade and temperatura %}
+            <div class="resultado">
+                <h2>{{cidade}}</h2>
+                <h2>{{temperatura}}</h2>
+            </div>
+        {% elif erro %}
+            <div class="erro">
+                <h2>{{ erro }}</h2>
+            </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
